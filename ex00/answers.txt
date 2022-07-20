@@ -1,6 +1,5 @@
-pip list
 pip list -V
 pip show numpy
->pip install pip-search
-pip_search tesseract
+pip uninstall numpy
+pip install numpy
 pip list --format freeze > requirements.txt
