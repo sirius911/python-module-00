@@ -1,3 +1,5 @@
+import sys
+
 def count_upper(string):
     total = 0
     for c in string:
@@ -26,7 +28,15 @@ def count_punctuation(string):
             total += 1
     return total
 
-def text_analyzer(*argv):
+def valid(argv):
+    if argv == '':
+        return True
+    for car in argv:
+        if not car.isdigit():
+            return True
+    return False
+
+def text_analyzer(argv = ''):
     """
     This function analyzes a string passed as a parameter. 
     Usage: text_analyzer(string)
@@ -44,18 +54,28 @@ def text_analyzer(*argv):
     Return:
         Nothing
     """
-    if len(argv) > 1:
-        print("Error")
-        return
-    if len(argv) == 0:
-        string = ""
-    else:
-        string = str(argv[0])
-    while len(string) == 0:
+    if not valid(argv):
+            print("AssertionError: argument is not a string")
+            return
+    string = str(argv)
+    while string == '':
         string = input("What is the text to analyse?\n>> ")
+    if not valid(string):
+        print("AssertionError: argument is not a string")
+        return
     size = len(string)
-    print ("The text contains", size, "characters:")
-    print ("-",count_upper(string), "upper letters")
-    print ("-", count_lower(string), "lower letters")
-    print ("-", count_punctuation(string), "punctuation marks")
-    print ("-", count_space(string), "spaces")
+    print (f"The text contains {size} character(s):")
+    print (f"- {count_upper(string)} upper letter(s)")
+    print (f"- {count_lower(string)} lower letter(s)")
+    print (f"- {count_punctuation(string)} punctuation mark(s)")
+    print (f"- {count_space(string)} space(s)")
+
+if __name__ == "__main__":
+    if len(sys.argv) > 2:
+        print("Error")
+        sys.exit(2)
+    if len(sys.argv) == 1:
+        text_analyzer("")
+    else:
+        text_analyzer(sys.argv[1])
+    sys.exit(1)

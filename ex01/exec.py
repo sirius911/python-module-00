@@ -12,6 +12,8 @@ def switchCase(c):
 
 def main(argv):
     str = ''
+    if len(argv) == 0:
+        return
     for word in reversed(argv):
         w = reversed(list(word))
         for c in w:

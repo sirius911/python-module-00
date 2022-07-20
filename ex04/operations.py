@@ -16,7 +16,7 @@ def ft_atoi(s):
 
     while (i < len(s)):
         if s[i] < '0' or s[i] > '9':
-            raise AssertionError("only numbers")
+            raise AssertionError("only integers")
         ret = 10 * ret + (ord(s[i]) - ord('0'))
         i += 1
     return sign * ret
@@ -45,7 +45,7 @@ def operation(argv):
         number2 = ft_atoi(argv[2])
         
     except AssertionError as e:
-        print("InputError:",str(e))
+        print("AssertionError:",str(e))
         exit(2)
 
     #operations

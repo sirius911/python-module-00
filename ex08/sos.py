@@ -1,6 +1,6 @@
 import sys
 
-MORSE_CODE_DICT = { ' ':' / ', 'A':'.-', 'B':'-...',
+MORSE_CODE_DICT = { ' ':'/', 'A':'.-', 'B':'-...',
                     'C':'-.-.', 'D':'-..', 'E':'.',
                     'F':'..-.', 'G':'--.', 'H':'....',
                     'I':'..', 'J':'.---', 'K':'-.-',
@@ -22,13 +22,18 @@ def valid_arg(argv):
                 sys.exit(2)
 
 def main(argv):
-    if len(argv) > 1:
-        valid_arg(argv[1:])
-        for arg in argv[1:]:
+    if len(argv) > 0:
+        valid_arg(argv)
+        i = 0
+        for arg in argv:
             for letter in arg:
                 print(MORSE_CODE_DICT[letter.upper()], end=' ')
+            if i + 1 < len(argv):
+                print(MORSE_CODE_DICT[' '], end = " ")
+            i += 1
     print("")
 
 if __name__ == "__main__":
-    main(sys.argv)
+    if len(sys.argv) > 1:
+        main(sys.argv[1:])
     sys.exit(1)

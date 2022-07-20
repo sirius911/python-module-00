@@ -5,4 +5,4 @@ languages = {
 }
 
 for langue, user in languages.items():
-    print(f"{langue} was creatde by {user}")
+    print(f"{langue} was created by {user}")
